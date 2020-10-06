@@ -7,8 +7,8 @@
 
 #include "JSONFile.hpp"
 
-JSONCpp::JSONFile::JSONFile(const char* key, const char* filePath) {
-    this->key = key;
+JSONCpp::JSONFile::JSONFile(const char* filePath) {
+//    this->key = key;
     this->filePath = filePath;
     
     file.open(this->filePath, std::ios::trunc);
@@ -58,23 +58,32 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
     }
     
     counter = 0;
-
     
-    for(const auto& pair : object.MapObjects()) {
-        
-        const auto& secondPair = pair.second;
+    for(const auto& maps : object.MapObjects()) {
         int counter2 = 0;
-        
-        for(const auto& json : secondPair.second) {
-            this->WritePairToFileWithoutKeys(json);
-
-            if(counter2 != secondPair.second.size() - 1)
+        for(const auto& map : maps.second) {
+            this->WritePairToFileWithoutKeys(map);
+            
+            if(counter2 != maps.second.size() - 1)
                 this->buffer << "},\n";
             else
                 this->buffer << "}\n";
             
             counter2++;
         }
+//        const auto& secondPair = pair.second;
+//        int counter2 = 0;
+//
+//        for(const auto& json : secondPair.second) {
+//            this->WritePairToFileWithoutKeys(json);
+//
+//            if(counter2 != secondPair.second.size() - 1)
+//                this->buffer << "},\n";
+//            else
+//                this->buffer << "}\n";
+//
+//            counter2++;
+//        }
         
         if(counter != object.MapObjects().size() - 1)
             this->buffer <<  " ],\n";
@@ -120,7 +129,7 @@ void JSONCpp::JSONFile::WritePairToFileWithoutKeys(const NestedJSON* object) {
 }
 
 void JSONCpp::JSONFile::WriteFileHeader() {
-    this->buffer << "{\n" << "\"" << this->key << "\"" << " : " << " {\n" << "}";
+    this->buffer << "{\n\n";
 }
 
 void JSONCpp::JSONFile::PrepareFileForWriting() {
@@ -130,7 +139,7 @@ void JSONCpp::JSONFile::PrepareFileForWriting() {
 }
 
 void JSONCpp::JSONFile::PrepareFileForClosing() {
-    this->buffer << "}\n}";
+    this->buffer << "\n}\n";
     this->contents.append(buffer.str());
     this->file << this->contents;
 }

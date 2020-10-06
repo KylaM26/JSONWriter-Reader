@@ -31,21 +31,23 @@ class NestedJSON;
         const char* key;
         std::map<const char*, const char*> objects;
         std::map<const char*, NestedJSON*> childObjects;
-        std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>> mapObjects;
+        std::map<const char*, std::vector<NestedJSON*>> mapObjects;
         bool isArray = false;
     public:
         NestedJSON();
         NestedJSON(const char* key);
-        NestedJSON(const char* key, const std::map<const char*, const char*>& objects);
-        NestedJSON(const char* key, std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& maps);
+//        NestedJSON(const char* key, const std::map<const char*, const char*>& objects);
+//        NestedJSON(const char* key, std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& maps);
         
+        void AddChildObject(const char* key, const char* value);
         void AddChildObject(NestedJSON* object);
+        void AddChildObject(const char* key, std::vector<NestedJSON*>& arrays);
 //        void AddChildObject(const std::pair<const char*, std::vector<NestedJSON*>>& object);
         
         const char* Key() const;
         const std::map<const char*, const char*>& Objects() const;
         const std::map<const char*, NestedJSON*>& ChildObjectPointers() const;
-        const std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& MapObjects() const;
+        const std::map<const char*, std::vector<NestedJSON*>>& MapObjects() const;
         
         const bool IsArrayOfData() const;
     };

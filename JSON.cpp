@@ -28,25 +28,30 @@ JSONCpp::NestedJSON::NestedJSON() {
 JSONCpp::NestedJSON::NestedJSON(const char* key) {
     this->key = key;
 }
+//
+//JSONCpp::NestedJSON::NestedJSON(const char* key,  const std::map<const char*, const char*>& objects) {
+//    this->key = key;
+//    this->objects = objects;
+//}
+//
+//JSONCpp::NestedJSON::NestedJSON(const char* key, std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& maps) {
+//    this->key = key;
+//    this->mapObjects = maps;
+//    this->isArray = true;
+//}
 
-JSONCpp::NestedJSON::NestedJSON(const char* key,  const std::map<const char*, const char*>& objects) {
-    this->key = key;
-    this->objects = objects;
-}
-
-JSONCpp::NestedJSON::NestedJSON(const char* key, std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& maps) {
-    this->key = key;
-    this->mapObjects = maps;
-    this->isArray = true;
+void JSONCpp::NestedJSON::AddChildObject(const char* key, const char* value) {
+    this->objects[key] = value;
 }
 
 void JSONCpp::NestedJSON::AddChildObject(NestedJSON* object) {
     this->childObjects[object->Key()] = object;
 }
-//
-//void JSONCpp::NestedJSON::AddChildObject(const std::pair<const char*, std::vector<NestedJSON*>>& object) {
-//    this->mapObjects[object.first] = object;
-//}
+
+void JSONCpp::NestedJSON::AddChildObject(const char* key, std::vector<NestedJSON*>& arrays) {
+    this->isArray = true;
+    this->mapObjects[key] = arrays;
+}
 
 const char* JSONCpp::NestedJSON::Key() const {
     return this->key;
@@ -60,7 +65,7 @@ const std::map<const char*, JSONCpp::NestedJSON*>& JSONCpp::NestedJSON::ChildObj
     return this->childObjects;
 }
 
-const std::map<const char*, std::pair<const char*, std::vector<JSONCpp::NestedJSON*>>>& JSONCpp::NestedJSON::MapObjects() const {
+const std::map<const char*, std::vector<JSONCpp::NestedJSON*>>& JSONCpp::NestedJSON::MapObjects() const {
     return this->mapObjects;
 }
 

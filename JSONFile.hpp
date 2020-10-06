@@ -42,7 +42,7 @@ namespace JSONCpp {
         void PrepareFileForClosing();
     public:
         // Must be initialized with a key and a path for writing
-        JSONFile(const char* key, const char* filePath);
+        JSONFile(const char* filePath);
         
         // Writes pair, must call update after queing is complete
         void QueueInPair(std::any pair);

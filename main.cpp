@@ -12,65 +12,45 @@ using namespace JSONCpp;
 
 int main(int argc, const char * argv[]) {
     const char* path = "/Users/incrediblekyla/Documents/Documents\ -\ Kyla’s\ MacBook\ Pro/WorkSpace/Developer/C\:C++/JSONWriter/JSONWriter/JSONFiles/Player.json";
-    JSONFile object = JSONFile("player", path);
+    JSONFile object = JSONFile(path); // The file
     
+    NestedJSON students = NestedJSON("students"); // Students arr container
     
-    std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>> playerObjects;
-
-    // Player 1
-    std::map<const char*, const char*> generalPlayerInfomation;
-    generalPlayerInfomation["name"] = "Kyla";
-    generalPlayerInfomation["level"] = "2";
-    generalPlayerInfomation["classification"] = "Noobie";
+    NestedJSON student = NestedJSON();
+    student.AddChildObject("name", "Kyla");
+    student.AddChildObject("age", "21");
+    student.AddChildObject("major", "ComputerScience");
     
-    std::map<const char*, const char*> playerGearSet;
-    playerGearSet["top"] = "Blue top";
-    playerGearSet["bottom"] = "Green bottoms";
-    playerGearSet["shoes"] = "Multicolored shoes";
+    NestedJSON classes = NestedJSON("classes");
     
-    NestedJSON playerGear = NestedJSON("player-gear", playerGearSet);
+    NestedJSON _class = NestedJSON();
+    _class.AddChildObject("course-name", "Algorithm Analysis");
+    _class.AddChildObject("course-number", "CSC 123");
+    _class.AddChildObject("course-classification", "Senior");
     
-    NestedJSON playerObjectOne = NestedJSON("player-1", generalPlayerInfomation);
-    playerObjectOne.AddChildObject(&playerGear);
+    NestedJSON classInfo = NestedJSON("course-info");
+    classInfo.AddChildObject("difficulty", "Medium");
+    classInfo.AddChildObject("subject", "Programming");
+    classInfo.AddChildObject("description", "Very fun class.");
     
+    _class.AddChildObject(&classInfo);
     
-    std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>> playerAttacksObjects;
+    std::vector<NestedJSON*> classArr;
+    classArr.push_back(&_class);
+    classArr.push_back(&_class);
     
-    std::map<const char*, const char*> playerAttackSet;
-    playerAttackSet["attack-name"] = "Upper cut";
-    playerAttackSet["damage"] = "10-20";
-    playerAttackSet["critical-rate"] = "0";
-
-    NestedJSON attackSet = NestedJSON("attack-set", playerAttackSet);
+    classes.AddChildObject("classes", classArr);
+    student.AddChildObject(&classes);
     
-    std::vector<NestedJSON*> arrayOfAttacks;
-    arrayOfAttacks.push_back(&attackSet);
-    arrayOfAttacks.push_back(&attackSet);
-    arrayOfAttacks.push_back(&attackSet);
+    std::vector<NestedJSON*> usersArr;
+    usersArr.push_back(&student);
+    usersArr.push_back(&student);
     
-    playerAttacksObjects["player-attacks"] = std::pair<const char*, std::vector<NestedJSON*>>("player-attacks", arrayOfAttacks);
-
-    
-    NestedJSON playerAttacks = NestedJSON("player-attacks", playerAttacksObjects);
-   playerObjectOne.AddChildObject(&playerAttacks);
-    
-    std::vector<NestedJSON*> arrayOfPlayers;
-    arrayOfPlayers.push_back(&playerObjectOne);
-    arrayOfPlayers.push_back(&playerObjectOne);
-    arrayOfPlayers.push_back(&playerObjectOne);
-    
-    playerObjects["users"] = std::pair<const char*, std::vector<NestedJSON*>>("users", arrayOfPlayers);
-    
-    NestedJSON usersArray = NestedJSON("users", playerObjects);
+    students.AddChildObject("users", usersArr);
     
     object.QueueInPair(JSON("version", "1.0"));
-    object.QueueInPair(usersArray);
-    
+    object.QueueInPair(students);
     object.Update();
-//
-//    JSONReader reader;
-//    NestedJSON data = reader.Parse(path);
-
     
     return 0;
 }

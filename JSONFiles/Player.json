@@ -1,88 +1,60 @@
 {
-    "player" :  {
-        "version" : "1.0",
-        "users" : [
-            {
-                "name" : "Kyla",
-                "level" : "2",
-                "classification" : "Noobie",
-                "player-gear" : {
-                    "top" : "Blue top",
-                    "bottom" : "Green bottoms",
-                    "shoes" : "Multicolored shoes"
-                },
-                "player-attacks" : [
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
+    "version" : "1.0",
+    "students" : [
+        {
+            "name" : "Kyla",
+            "age" : "21",
+            "major" : "ComputerScience",
+            "classes" : [
+                {
+                    "course-name" : "Algorithm Analysis",
+                    "course-number" : "CSC 123",
+                    "course-classification" : "Senior",
+                    "course-info" : {
+                        "difficulty" : "Medium",
+                        "subject" : "Programming",
+                        "description" : "Very fun class."
                     }
-                ]
-            },
-            {
-                "name" : "Kyla",
-                "level" : "2",
-                "classification" : "Noobie",
-                "player-gear" : {
-                    "top" : "Blue top",
-                    "bottom" : "Green bottoms",
-                    "shoes" : "Multicolored shoes"
                 },
-                "player-attacks" : [
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
+                {
+                    "course-name" : "Algorithm Analysis",
+                    "course-number" : "CSC 123",
+                    "course-classification" : "Senior",
+                    "course-info" : {
+                        "difficulty" : "Medium",
+                        "subject" : "Programming",
+                        "description" : "Very fun class."
                     }
-                ]
-            },
-            {
-                "name" : "Kyla",
-                "level" : "2",
-                "classification" : "Noobie",
-                "player-gear" : {
-                    "top" : "Blue top",
-                    "bottom" : "Green bottoms",
-                    "shoes" : "Multicolored shoes"
+                }
+            ]
+        },
+        {
+            "name" : "Kyla",
+            "age" : "21",
+            "major" : "ComputerScience",
+            "classes" : [
+                {
+                    "course-name" : "Algorithm Analysis",
+                    "course-number" : "CSC 123",
+                    "course-classification" : "Senior",
+                    "course-info" : {
+                        "difficulty" : "Medium",
+                        "subject" : "Programming",
+                        "description" : "Very fun class."
+                    }
                 },
-                "player-attacks" : [
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
-                    },
-                    {
-                        "attack-name" : "Upper cut",
-                        "damage" : "10-20",
-                        "critical-rate" : "0"
+                {
+                    "course-name" : "Algorithm Analysis",
+                    "course-number" : "CSC 123",
+                    "course-classification" : "Senior",
+                    "course-info" : {
+                        "difficulty" : "Medium",
+                        "subject" : "Programming",
+                        "description" : "Very fun class."
                     }
-                ]
-            }
-        ]
-    }
+                }
+            ]
+        }
+    ]
+    
 }
