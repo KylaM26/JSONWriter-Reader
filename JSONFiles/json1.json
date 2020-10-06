@@ -1,0 +1,32 @@
+
+
+"player" : {
+    "name": "Incredible Kyla",
+    
+    "gear-set" : {
+        "gear-set-top" : "Diamond Vest",
+        "gear-set-bottom" : "Iron Shorts",
+        "gear-set-hat" : "Soft Cap",
+        "gear-set-accessories" : {
+            "gear-set-accessory-amulet" : "Red Lucky Charm Necklace",
+            "gear-set-accessory-braclet" : "Red Lucky Charm Braclet",
+        }
+    },
+    
+    "learned-attacks": {
+        "attack-0" : "Kong Fu Kick",
+        "attack-1" : "Upper Cut"
+    }
+    
+    "position" : {
+        "world-position" : {
+            "x-position" : "342.954",
+            "y-position" : "-11.330",
+        },
+        
+        "local-position" : {
+            "x-position" : "592.111",
+            "y-position" : "96.490",
+        }
+    }
+}

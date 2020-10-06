@@ -1,0 +1,88 @@
+{
+    "player" :  {
+        "version" : "1.0",
+        "users" : [
+            {
+                "name" : "Kyla",
+                "level" : "2",
+                "classification" : "Noobie",
+                "player-gear" : {
+                    "top" : "Blue top",
+                    "bottom" : "Green bottoms",
+                    "shoes" : "Multicolored shoes"
+                },
+                "player-attacks" : [
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    }
+                ]
+            },
+            {
+                "name" : "Kyla",
+                "level" : "2",
+                "classification" : "Noobie",
+                "player-gear" : {
+                    "top" : "Blue top",
+                    "bottom" : "Green bottoms",
+                    "shoes" : "Multicolored shoes"
+                },
+                "player-attacks" : [
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    }
+                ]
+            },
+            {
+                "name" : "Kyla",
+                "level" : "2",
+                "classification" : "Noobie",
+                "player-gear" : {
+                    "top" : "Blue top",
+                    "bottom" : "Green bottoms",
+                    "shoes" : "Multicolored shoes"
+                },
+                "player-attacks" : [
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    },
+                    {
+                        "attack-name" : "Upper cut",
+                        "damage" : "10-20",
+                        "critical-rate" : "0"
+                    }
+                ]
+            }
+        ]
+    }
+}
