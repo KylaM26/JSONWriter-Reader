@@ -19,7 +19,7 @@ void JSONCpp::JSONFile::QueueInPair(std::any pair) {
     this->dataQueue.push(pair);
 }
 
-void JSONCpp::JSONFile::WritePairToFile(const char* k, const char* v) {
+void JSONCpp::JSONFile::WritePairToFile(const std::string& k, const std::string& v) {
     this->buffer << "\"" << k << "\"" << " : " << "\"" << v << "\"";
 }
 

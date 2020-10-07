@@ -1,5 +1,6 @@
 {
     "version" : "1.0",
+    "school" : "Jackson State University",
     "students" : [
         {
             "name" : "Kyla",

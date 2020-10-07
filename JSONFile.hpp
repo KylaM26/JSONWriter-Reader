@@ -32,7 +32,7 @@ namespace JSONCpp {
         // Will store a key of any type
         std::queue<std::any> dataQueue;
 
-        void WritePairToFile(const char* k, const char* v);
+        void WritePairToFile(const std::string& k, const std::string& v);
         void WritePairToFile(const NestedJSON& object);
 //        void WritePairToFileWithoutKeys(const NestedJSON& object);
         void WritePairToFileWithoutKeys(const NestedJSON* object);
