@@ -1,61 +1,317 @@
-{
-    "version" : "1.0",
-    "school" : "Jackson State University",
-    "students" : [
-        {
-            "name" : "Kyla",
-            "age" : "21",
-            "major" : "ComputerScience",
-            "classes" : [
-                {
-                    "course-name" : "Algorithm Analysis",
-                    "course-number" : "CSC 123",
-                    "course-classification" : "Senior",
-                    "course-info" : {
-                        "difficulty" : "Medium",
-                        "subject" : "Programming",
-                        "description" : "Very fun class."
-                    }
-                },
-                {
-                    "course-name" : "Algorithm Analysis",
-                    "course-number" : "CSC 123",
-                    "course-classification" : "Senior",
-                    "course-info" : {
-                        "difficulty" : "Medium",
-                        "subject" : "Programming",
-                        "description" : "Very fun class."
-                    }
-                }
-            ]
-        },
-        {
-            "name" : "Kyla",
-            "age" : "21",
-            "major" : "ComputerScience",
-            "classes" : [
-                {
-                    "course-name" : "Algorithm Analysis",
-                    "course-number" : "CSC 123",
-                    "course-classification" : "Senior",
-                    "course-info" : {
-                        "difficulty" : "Medium",
-                        "subject" : "Programming",
-                        "description" : "Very fun class."
-                    }
-                },
-                {
-                    "course-name" : "Algorithm Analysis",
-                    "course-number" : "CSC 123",
-                    "course-classification" : "Senior",
-                    "course-info" : {
-                        "difficulty" : "Medium",
-                        "subject" : "Programming",
-                        "description" : "Very fun class."
-                    }
-                }
-            ]
-        }
-    ]
-    
-}
+[
+    {
+        "_id": "5f7dcaf00e43748967565a37",
+        "index": 0,
+        "guid": "1b282007-8fbe-4f21-8ac7-416fd8af276e",
+        "isActive": false,
+        "balance": "$1,382.73",
+        "picture": "http://placehold.it/32x32",
+        "age": 39,
+        "eyeColor": "green",
+        "name": "Rhodes Dunlap",
+        "gender": "male",
+        "company": "XERONK",
+        "email": "rhodesdunlap@xeronk.com",
+        "phone": "+1 (846) 430-2014",
+        "address": "770 Bowery Street, Stouchsburg, Tennessee, 6084",
+        "about": "Commodo enim occaecat elit est labore do mollit proident. Officia aute qui officia enim sit do. Id Lorem incididunt in id nisi officia ullamco quis non. Aliquip qui sint proident elit elit quis do ullamco ex anim exercitation mollit. Culpa non occaecat duis eiusmod pariatur dolore pariatur dolor incididunt. Nostrud anim eiusmod aute nostrud reprehenderit id occaecat laboris.\r\n",
+        "registered": "2019-06-29T12:40:49 +05:00",
+        "latitude": 59.026677,
+        "longitude": 173.489224,
+        "tags": [
+            "exercitation",
+            "incididunt",
+            "consectetur",
+            "aute",
+            "in",
+            "incididunt",
+            "quis"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Nola Wiggins"
+            },
+            {
+                "id": 1,
+                "name": "Faith Dalton"
+            },
+            {
+                "id": 2,
+                "name": "Rochelle Cunningham"
+            }
+        ],
+        "greeting": "Hello, Rhodes Dunlap! You have 4 unread messages.",
+        "favoriteFruit": "apple"
+    },
+    {
+        "_id": "5f7dcaf0eab9c855d9d25a96",
+        "index": 1,
+        "guid": "77727257-5ef8-46f4-8e0b-83bccfbd65bc",
+        "isActive": true,
+        "balance": "$2,809.16",
+        "picture": "http://placehold.it/32x32",
+        "age": 27,
+        "eyeColor": "brown",
+        "name": "Tracie Hutchinson",
+        "gender": "female",
+        "company": "QUAILCOM",
+        "email": "traciehutchinson@quailcom.com",
+        "phone": "+1 (836) 524-2831",
+        "address": "550 Bridgewater Street, Cresaptown, Colorado, 3348",
+        "about": "Enim amet ut Lorem amet nulla tempor aute elit adipisicing reprehenderit qui laborum. Nisi enim labore Lorem occaecat cupidatat aute proident occaecat ut minim minim magna esse et. Est aliquip voluptate culpa veniam consequat excepteur sunt. Qui fugiat laboris exercitation dolor quis do ipsum mollit. Commodo Lorem ullamco magna minim cillum amet.\r\n",
+        "registered": "2016-09-17T07:56:38 +05:00",
+        "latitude": -53.298064,
+        "longitude": 50.150182,
+        "tags": [
+            "culpa",
+            "ut",
+            "anim",
+            "nostrud",
+            "consectetur",
+            "cupidatat",
+            "qui"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Kathrine Hodges"
+            },
+            {
+                "id": 1,
+                "name": "Mills Matthews"
+            },
+            {
+                "id": 2,
+                "name": "Claudine Sharp"
+            }
+        ],
+        "greeting": "Hello, Tracie Hutchinson! You have 6 unread messages.",
+        "favoriteFruit": "strawberry"
+    },
+    {
+        "_id": "5f7dcaf05bcfd7f6d7c5d761",
+        "index": 2,
+        "guid": "1120ea2d-6c55-42c4-82b9-640ed4a95260",
+        "isActive": true,
+        "balance": "$1,790.77",
+        "picture": "http://placehold.it/32x32",
+        "age": 21,
+        "eyeColor": "green",
+        "name": "Bell Lee",
+        "gender": "male",
+        "company": "ACCIDENCY",
+        "email": "belllee@accidency.com",
+        "phone": "+1 (885) 498-2925",
+        "address": "301 Nichols Avenue, Fairhaven, Maryland, 3442",
+        "about": "Occaecat irure est magna nostrud nostrud. Cillum laboris Lorem anim incididunt officia laborum sit minim quis. Adipisicing Lorem tempor in anim. Cillum ea laborum do ullamco deserunt fugiat consequat. Exercitation do aliqua voluptate commodo. Commodo ipsum officia voluptate eiusmod dolor ipsum elit sit amet aliquip incididunt.\r\n",
+        "registered": "2018-02-10T07:23:48 +06:00",
+        "latitude": 50.160267,
+        "longitude": -48.55382,
+        "tags": [
+            "aliqua",
+            "consectetur",
+            "sunt",
+            "sint",
+            "ex",
+            "ad",
+            "et"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Hancock Bender"
+            },
+            {
+                "id": 1,
+                "name": "Juliette Mckee"
+            },
+            {
+                "id": 2,
+                "name": "Susie Justice"
+            }
+        ],
+        "greeting": "Hello, Bell Lee! You have 7 unread messages.",
+        "favoriteFruit": "apple"
+    },
+    {
+        "_id": "5f7dcaf0779b42c57f75c5f7",
+        "index": 3,
+        "guid": "2f4c6c25-f796-49b0-9f12-cd85a4167517",
+        "isActive": true,
+        "balance": "$2,666.07",
+        "picture": "http://placehold.it/32x32",
+        "age": 27,
+        "eyeColor": "green",
+        "name": "Loretta Shaffer",
+        "gender": "female",
+        "company": "NIQUENT",
+        "email": "lorettashaffer@niquent.com",
+        "phone": "+1 (876) 411-3918",
+        "address": "835 Ridgewood Place, Siglerville, Texas, 8580",
+        "about": "Voluptate culpa ut reprehenderit commodo. Duis nostrud in consequat ullamco anim consequat. In aliquip mollit laboris nisi pariatur id ad id culpa Lorem aliquip aliqua sit esse. Voluptate pariatur eiusmod ea labore fugiat ea aliqua minim nulla. Reprehenderit deserunt officia voluptate Lorem.\r\n",
+        "registered": "2016-09-25T03:55:53 +05:00",
+        "latitude": 73.194482,
+        "longitude": 16.984434,
+        "tags": [
+            "sint",
+            "cupidatat",
+            "mollit",
+            "amet",
+            "do",
+            "duis",
+            "sunt"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Frankie Pope"
+            },
+            {
+                "id": 1,
+                "name": "Wilson Berry"
+            },
+            {
+                "id": 2,
+                "name": "Ines Wilkinson"
+            }
+        ],
+        "greeting": "Hello, Loretta Shaffer! You have 5 unread messages.",
+        "favoriteFruit": "strawberry"
+    },
+    {
+        "_id": "5f7dcaf04a2a21faa704fd1f",
+        "index": 4,
+        "guid": "9ae3fee2-ec6f-4322-b43e-3e481787c514",
+        "isActive": false,
+        "balance": "$1,733.37",
+        "picture": "http://placehold.it/32x32",
+        "age": 33,
+        "eyeColor": "green",
+        "name": "Jeanie Gill",
+        "gender": "female",
+        "company": "ACCUPRINT",
+        "email": "jeaniegill@accuprint.com",
+        "phone": "+1 (943) 510-3403",
+        "address": "335 Seagate Avenue, Waterloo, Nevada, 3985",
+        "about": "Ut aliquip exercitation tempor commodo ea nostrud occaecat elit tempor tempor enim aliqua velit. Proident commodo fugiat non ut magna pariatur esse non magna culpa cillum. Dolore enim deserunt id id non irure amet nisi anim nostrud do fugiat. Irure magna cupidatat eu aliqua in.\r\n",
+        "registered": "2020-08-31T12:19:16 +05:00",
+        "latitude": 47.310342,
+        "longitude": -124.359309,
+        "tags": [
+            "dolore",
+            "velit",
+            "excepteur",
+            "id",
+            "ullamco",
+            "aliquip",
+            "veniam"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Angelina Dennis"
+            },
+            {
+                "id": 1,
+                "name": "Tracey Downs"
+            },
+            {
+                "id": 2,
+                "name": "Lynn Mejia"
+            }
+        ],
+        "greeting": "Hello, Jeanie Gill! You have 7 unread messages.",
+        "favoriteFruit": "apple"
+    },
+    {
+        "_id": "5f7dcaf00a2981c133d01460",
+        "index": 5,
+        "guid": "d98c6f5a-4976-4713-bddd-e8c3169dfe94",
+        "isActive": false,
+        "balance": "$3,293.91",
+        "picture": "http://placehold.it/32x32",
+        "age": 35,
+        "eyeColor": "green",
+        "name": "Shaw Foley",
+        "gender": "male",
+        "company": "ZOSIS",
+        "email": "shawfoley@zosis.com",
+        "phone": "+1 (803) 546-2656",
+        "address": "972 Seigel Street, Coloma, Missouri, 9212",
+        "about": "Reprehenderit in laborum proident ullamco laborum proident eiusmod dolore. Commodo excepteur quis dolore reprehenderit deserunt non qui labore sunt est nulla. Qui irure ea sunt et velit enim. Lorem dolore laboris nisi velit nulla ad officia anim commodo. Commodo eiusmod eu ut amet laborum sit ullamco et Lorem ullamco aliquip Lorem.\r\n",
+        "registered": "2017-12-17T01:26:12 +06:00",
+        "latitude": 49.826706,
+        "longitude": 176.570235,
+        "tags": [
+            "elit",
+            "officia",
+            "ad",
+            "ullamco",
+            "dolore",
+            "esse",
+            "officia"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Virginia Hawkins"
+            },
+            {
+                "id": 1,
+                "name": "Betsy Rosa"
+            },
+            {
+                "id": 2,
+                "name": "Glenda Salazar"
+            }
+        ],
+        "greeting": "Hello, Shaw Foley! You have 5 unread messages.",
+        "favoriteFruit": "apple"
+    },
+    {
+        "_id": "5f7dcaf0b99022d3a256c432",
+        "index": 6,
+        "guid": "198162d5-2a31-4634-a2f1-742c8a154b3d",
+        "isActive": false,
+        "balance": "$3,299.45",
+        "picture": "http://placehold.it/32x32",
+        "age": 20,
+        "eyeColor": "blue",
+        "name": "Reed Clarke",
+        "gender": "male",
+        "company": "PANZENT",
+        "email": "reedclarke@panzent.com",
+        "phone": "+1 (969) 590-2313",
+        "address": "162 Erasmus Street, Cedarville, Utah, 8607",
+        "about": "Consectetur proident exercitation minim pariatur cupidatat do adipisicing aliquip occaecat Lorem. Enim sit amet ipsum reprehenderit tempor officia irure Lorem tempor labore nulla excepteur aute. Eu sit elit minim quis pariatur veniam laborum sunt commodo commodo ut incididunt laboris. Id nisi quis nulla eiusmod voluptate ullamco et elit. Ad consectetur sint exercitation nisi velit. Ut officia nostrud ad ex do sit eiusmod sit. Velit sunt occaecat ea et exercitation culpa laborum velit sit laborum id.\r\n",
+        "registered": "2019-11-06T07:18:39 +06:00",
+        "latitude": -27.934134,
+        "longitude": 125.267073,
+        "tags": [
+            "sunt",
+            "aliqua",
+            "velit",
+            "duis",
+            "sit",
+            "occaecat",
+            "magna"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Mcleod Browning"
+            },
+            {
+                "id": 1,
+                "name": "Gwen Greene"
+            },
+            {
+                "id": 2,
+                "name": "Schroeder Frazier"
+            }
+        ],
+        "greeting": "Hello, Reed Clarke! You have 1 unread messages.",
+        "favoriteFruit": "strawberry"
+    }
+]

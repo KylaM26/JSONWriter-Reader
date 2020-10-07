@@ -11,12 +11,15 @@
 #include <iostream>
 #include <vector>
 #include <map>
-
+#include <memory>
 namespace JSONCpp {
-class JSONArray;
 
-class NestedJSON;
+class JSONObj;
 
+typedef std::vector<std::shared_ptr<JSONObj>> JSONArray;
+typedef std::shared_ptr<JSONObj> JSONObject;
+
+#define MakeJSONObject std::make_shared<JSONObj>
     class JSON {
     private:
         std::pair<const char*, const char*> stringValuePair;
@@ -26,37 +29,37 @@ class NestedJSON;
         const char* Value() const;
     };
 
-    class NestedJSON {
+    class JSONObj {
     private:
         const char* key;
-        std::map<std::string, std::string> objects;
-        std::map<std::string, NestedJSON*> childObjects;
-        std::map<std::string, std::vector<NestedJSON*>> mapObjects;
+        std::map<std::string, std::string> keyValuePairs;
+        std::map<std::string, JSONObject> keyObjectPairs;
+        std::map<std::string, JSONArray> keyArrayPairs;
         bool isArray = false;
     public:
-        NestedJSON();
-        NestedJSON(const char* key);
+        JSONObj();
+        JSONObj(const char* key);
 
         
         void RenameKey(const char* key);
         void AddChildObject(const char* key, const char* value);
-        void AddChildObject(NestedJSON* object);
-        void AddChildObject(const char* key, std::vector<NestedJSON*>& arrays);
+        void AddChildObject(JSONObject object);
+        void AddChildObject(const char* key, JSONArray& arrays);
 
-        void AddChildObjectToArray(const char* key, NestedJSON* object);
+        void AddChildObjectToArray(const char* key, JSONObject object);
         
         const char* Key() const;
-        const std::map<std::string, std::string>& Objects() const;
-        const std::map<std::string, NestedJSON*>& ChildObjectPointers() const;
-        const std::map<std::string, std::vector<NestedJSON*>>& MapObjects() const;
+        const std::map<std::string, std::string>& KeyValuePairs() const;
+        const std::map<std::string, JSONObject>& KeyObjectPairs() const;
+        const std::map<std::string, JSONArray>& KeyArrayPairs() const;
         
         void SetIsArray(const bool b);
         const bool IsArrayOfData() const;
-        
-//        const char* ValueForKey(const char* key) const;
-//        const NestedJSON* ObjectForKey(const char* key) const;
-//        const NestedJSON* ArrayForKey(const char* key) const;
     };
+
+
+
+
 
 };
 

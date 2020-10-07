@@ -22,65 +22,56 @@ const char* JSONCpp::JSON::Value() const {
 
 
 // NEST JSON
-JSONCpp::NestedJSON::NestedJSON() {
+JSONCpp::JSONObj::JSONObj() {
     this->key = "";
-}
-JSONCpp::NestedJSON::NestedJSON(const char* key) {
-    this->key = key;
-}
-void JSONCpp::NestedJSON::RenameKey(const char* key) {
-    this->key = key;
-}
-//
-//JSONCpp::NestedJSON::NestedJSON(const char* key,  const std::map<const char*, const char*>& objects) {
-//    this->key = key;
-//    this->objects = objects;
-//}
-//
-//JSONCpp::NestedJSON::NestedJSON(const char* key, std::map<const char*, std::pair<const char*, std::vector<NestedJSON*>>>& maps) {
-//    this->key = key;
-//    this->mapObjects = maps;
-//    this->isArray = true;
-//}
-
-void JSONCpp::NestedJSON::AddChildObject(const char* key, const char* value) {
-    this->objects[key] = value;
-}
-
-void JSONCpp::NestedJSON::AddChildObject(NestedJSON* object) {
-    this->childObjects[object->Key()] = object;
-}
-
-void JSONCpp::NestedJSON::AddChildObject(const char* key, std::vector<NestedJSON*>& arrays) {
     this->isArray = true;
-    this->mapObjects[key] = arrays;
+}
+JSONCpp::JSONObj::JSONObj(const char* key) {
+    this->key = key;
+}
+void JSONCpp::JSONObj::RenameKey(const char* key) {
+    this->key = key;
 }
 
-const char* JSONCpp::NestedJSON::Key() const {
+void JSONCpp::JSONObj::AddChildObject(const char* key, const char* value) {
+    this->keyValuePairs[key] = value;
+}
+
+void JSONCpp::JSONObj::AddChildObject(JSONObject object) {
+    this->keyObjectPairs[object->Key()] = object;
+}
+
+void JSONCpp::JSONObj::AddChildObject(const char* key, JSONArray& arrays) {
+    this->isArray = true;
+    this->keyArrayPairs[key] = arrays;
+}
+
+const char* JSONCpp::JSONObj::Key() const {
     return this->key;
 }
 
-const std::map<std::string, std::string>& JSONCpp::NestedJSON::Objects() const {
-    return this->objects;
+const std::map<std::string, std::string>& JSONCpp::JSONObj::KeyValuePairs() const {
+    return this->keyValuePairs;
 }
 
-const std::map<std::string, JSONCpp::NestedJSON*>& JSONCpp::NestedJSON::ChildObjectPointers() const {
-    return this->childObjects;
+const std::map<std::string, JSONCpp::JSONObject>& JSONCpp::JSONObj::KeyObjectPairs() const {
+    return this->keyObjectPairs;
 }
 
-const std::map<std::string, std::vector<JSONCpp::NestedJSON*>>& JSONCpp::NestedJSON::MapObjects() const {
-    return this->mapObjects;
+const std::map<std::string, JSONCpp::JSONArray>& JSONCpp::JSONObj::KeyArrayPairs() const {
+    return this->keyArrayPairs;
 }
 
-void JSONCpp::NestedJSON::AddChildObjectToArray(const char* key, JSONCpp::NestedJSON* object) {
-    this->mapObjects[key].push_back(object);
+void JSONCpp::JSONObj::AddChildObjectToArray(const char* key, JSONCpp::JSONObject object) {
+    this->isArray = true;
+    this->keyArrayPairs[key].push_back(object);
 }
 
-void JSONCpp::NestedJSON::SetIsArray(const bool b) {
+void JSONCpp::JSONObj::SetIsArray(const bool b) {
     this->isArray = true;
 }
 
-const bool JSONCpp::NestedJSON::IsArrayOfData() const {
+const bool JSONCpp::JSONObj::IsArrayOfData() const {
     return this->isArray;
 }
 //

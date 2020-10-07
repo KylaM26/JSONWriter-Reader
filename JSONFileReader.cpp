@@ -5,9 +5,9 @@
 //  Created by Kyla Wilson on 10/4/20.
 //
 
-#include "JSONReader.hpp"
+#include "JSONFileReader.hpp"
 
-void JSONCpp::JSONReader::ParseFile(const char* filepath) {
+void JSONCpp::JSONFileReader::ParseFile(const char* filepath) {
     std::ifstream file;
     
     file.open(filepath);
@@ -16,14 +16,14 @@ void JSONCpp::JSONReader::ParseFile(const char* filepath) {
     while (getline(file, line)) {
         this->buffer.append(line);
     }
-    
+    this->buffer.erase(remove(this->buffer.begin(), this->buffer.end(), ' '), this->buffer.end());
     file.close();
     
     
     this->Parse(this->object);
 }
 
-void JSONCpp::JSONReader::Parse(NestedJSON& json) {
+void JSONCpp::JSONFileReader::Parse(JSONObj& json) {
     std::string keyBuffer = "";
     std::string currentKey = "";
     std::string valueBuffer = "";
@@ -32,6 +32,11 @@ void JSONCpp::JSONReader::Parse(NestedJSON& json) {
     
     for(; this->index < this->buffer.size(); this->index++) {
         char c = this->buffer[this->index];
+        
+        if(index == 0) {
+            if(this->buffer[1] == '{' && c == '[')
+                this->ParseArrays("", json);
+        }
         
         if(keyWasFound) {
             if (c != '"')
@@ -58,15 +63,12 @@ void JSONCpp::JSONReader::Parse(NestedJSON& json) {
             if(nextChar == '"') {
                 valueFound = true;
             } else if (nextChar == '{') {
-                std::shared_ptr<NestedJSON> newJson = std::make_shared<NestedJSON>(currentKey.c_str()); //new
+                std::shared_ptr<JSONObj> newJson = std::make_shared<JSONObj>(currentKey.c_str()); //new
                 this->childrenObjets.push_back(newJson);
-                json.AddChildObject(newJson.get());
+                json.AddChildObject(newJson);
                 this->Parse(*newJson);
             } else if (nextChar == '[') {
-//                std::shared_ptr<NestedJSON> newJson = std::make_shared<NestedJSON>(currentKey.c_str()); //new
-//                newJson.get()->SetIsArray(true);
-//                json.AddChildObject(newJson.get());
-//                this->childrenObjets.push_back(newJson);
+                NameLessArrayOfData:
                 this->ParseArrays(currentKey.c_str(), json);
             }
             
@@ -82,25 +84,26 @@ void JSONCpp::JSONReader::Parse(NestedJSON& json) {
     }
 }
 
-void JSONCpp::JSONReader::ParseArrays(const char* key, JSONCpp::NestedJSON& json) {
+void JSONCpp::JSONFileReader::ParseArrays(const char* key, JSONCpp::JSONObj& json) {
 
-    std::vector<std::shared_ptr<NestedJSON>> arrayPointers;
+    std::vector<std::shared_ptr<JSONObj>> arrayPointers;
     
     for(; this->index < this->buffer.size(); this->index++) {
         char c = this->buffer[this->index];
         
     
         if(c == '{') {
-            std::shared_ptr<NestedJSON> newArray = std::make_shared<NestedJSON>();
+            std::shared_ptr<JSONObj> newArray = std::make_shared<JSONObj>();
             this->childrenObjets.push_back(newArray);
             arrayPointers.push_back(this->childrenObjets.back());
             this->Parse(*newArray);
         }
 
         if(c == ']') {
-            for(auto& arr : arrayPointers) {
-                json.AddChildObjectToArray(key, arr.get());
-            }
+            json.AddChildObject(key, arrayPointers);
+//            for(auto& arr : arrayPointers) {
+//                json.AddChildObjectToArray(key, arr);
+//            }
             return;
         }
     }
@@ -108,6 +111,6 @@ void JSONCpp::JSONReader::ParseArrays(const char* key, JSONCpp::NestedJSON& json
     
 }
 
-const JSONCpp::NestedJSON& JSONCpp::JSONReader::Object() {
+const JSONCpp::JSONObj& JSONCpp::JSONFileReader::Object() {
     return this->object;
 }

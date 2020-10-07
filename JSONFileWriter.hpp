@@ -22,7 +22,7 @@
 // Keys must have different names
 
 namespace JSONCpp {
-    class JSONFile {
+    class JSONFileWriter {
     private:
         const char* key;
         const char* filePath;
@@ -33,16 +33,16 @@ namespace JSONCpp {
         std::queue<std::any> dataQueue;
 
         void WritePairToFile(const std::string& k, const std::string& v);
-        void WritePairToFile(const NestedJSON& object);
+        void WritePairToFile(const JSONObj& object);
 //        void WritePairToFileWithoutKeys(const NestedJSON& object);
-        void WritePairToFileWithoutKeys(const NestedJSON* object);
+        void WritePairToFileWithoutKeys(const JSONObj& object);
         
         void WriteFileHeader();
         void PrepareFileForWriting();
         void PrepareFileForClosing();
     public:
         // Must be initialized with a key and a path for writing
-        JSONFile(const char* filePath);
+        JSONFileWriter(const char* filePath);
         
         // Writes pair, must call update after queing is complete
         void QueueInPair(std::any pair);
@@ -54,7 +54,7 @@ namespace JSONCpp {
         
         void BeautifyJSON();
         
-        ~JSONFile();
+        ~JSONFileWriter();
     };
     
 };

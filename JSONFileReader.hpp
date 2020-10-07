@@ -20,16 +20,16 @@
 namespace JSONCpp {
     class JSONFileReader {
     private:
-        JSONObject object;
-        std::vector<std::shared_ptr<JSONObject>> childrenObjets;
+        JSONObj object;
+        std::vector<std::shared_ptr<JSONObj>> childrenObjets;
         std::string buffer;
-        void Parse(JSONObject& json);
-        void ParseArrays(const char* key, JSONObject& json);
+        void Parse(JSONObj& json);
+        void ParseArrays(const char* key, JSONObj& json);
         
         int index = 0;
     public:
         void ParseFile(const char* filepath);
-        const JSONObject& Object();
+        const JSONObj& Object();
     };
 };
 

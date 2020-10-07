@@ -5,9 +5,9 @@
 //  Created by Kyla Wilson on 10/2/20.
 //
 
-#include "JSONFile.hpp"
+#include "JSONFileWriter.hpp"
 
-JSONCpp::JSONFile::JSONFile(const char* filePath) {
+JSONCpp::JSONFileWriter::JSONFileWriter(const char* filePath) {
 //    this->key = key;
     this->filePath = filePath;
     
@@ -15,16 +15,15 @@ JSONCpp::JSONFile::JSONFile(const char* filePath) {
     this->WriteFileHeader(); // Writes file header
 }
 
-void JSONCpp::JSONFile::QueueInPair(std::any pair) {
+void JSONCpp::JSONFileWriter::QueueInPair(std::any pair) {
     this->dataQueue.push(pair);
 }
 
-void JSONCpp::JSONFile::WritePairToFile(const std::string& k, const std::string& v) {
+void JSONCpp::JSONFileWriter::WritePairToFile(const std::string& k, const std::string& v) {
     this->buffer << "\"" << k << "\"" << " : " << "\"" << v << "\"";
 }
 
-void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
-
+void JSONCpp::JSONFileWriter::WritePairToFile(const JSONObj& object) {
     int counter = 0;
     
     if(!object.IsArrayOfData())
@@ -32,11 +31,11 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
     else
         this->buffer << "\"" << object.Key() << "\"" << " : " << "[\n";
     
-    for(const auto& pair : object.Objects()) {
+    for(const auto& pair : object.KeyValuePairs()) {
 
          this->WritePairToFile(pair.first, pair.second);
          
-         if(counter != object.Objects().size() - 1 || !object.ChildObjectPointers().empty())
+         if(counter != object.KeyValuePairs().size() - 1 || !object.KeyObjectPairs().empty())
              this->buffer << ",\n";
          else  // If there is no child pointer dont add comma
              this->buffer << "\n";
@@ -46,10 +45,10 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
     
     counter = 0;
     
-    for(const auto& pair : object.ChildObjectPointers()) {
+    for(const auto& pair : object.KeyObjectPairs()) {
         this->WritePairToFile(*pair.second);
         
-        if(counter != object.ChildObjectPointers().size() - 1)
+        if(counter != object.KeyObjectPairs().size() - 1)
             this->buffer << "},\n";
         else
             this->buffer << "}\n";
@@ -59,10 +58,10 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
     
     counter = 0;
     
-    for(const auto& maps : object.MapObjects()) {
+    for(const auto& maps : object.KeyArrayPairs()) {
         int counter2 = 0;
         for(const auto& map : maps.second) {
-            this->WritePairToFileWithoutKeys(map);
+            this->WritePairToFileWithoutKeys(*map);
             
             if(counter2 != maps.second.size() - 1)
                 this->buffer << "},\n";
@@ -85,7 +84,7 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
 //            counter2++;
 //        }
         
-        if(counter != object.MapObjects().size() - 1)
+        if(counter != object.KeyArrayPairs().size() - 1)
             this->buffer <<  " ],\n";
         else
             this->buffer <<  " ]\n";
@@ -96,14 +95,14 @@ void JSONCpp::JSONFile::WritePairToFile(const NestedJSON& object) {
     
 }
 
-void JSONCpp::JSONFile::WritePairToFileWithoutKeys(const NestedJSON* object) {
+void JSONCpp::JSONFileWriter::WritePairToFileWithoutKeys(const JSONObj& object) {
     this->buffer << "{\n";
     int counter = 0;
     
-    for(const auto& pair : object->Objects()) {
+    for(const auto& pair : object.KeyValuePairs()) {
          this->WritePairToFile(pair.first, pair.second);
          
-        if(counter != object->Objects().size() - 1 || !object->ChildObjectPointers().empty())
+        if(counter != object.KeyValuePairs().size() - 1 || !object.KeyObjectPairs().empty())
             this->buffer << ",\n";
         else  // If there is no child pointer dont add comma
             this->buffer << "\n";
@@ -113,11 +112,11 @@ void JSONCpp::JSONFile::WritePairToFileWithoutKeys(const NestedJSON* object) {
     
     counter = 0;
     
-    for(const auto& pair : object->ChildObjectPointers()) {
+    for(const auto& pair : object.KeyObjectPairs()) {
         this->WritePairToFile(*pair.second);
         
         if(!pair.second->IsArrayOfData()) {
-        if (counter != object->ChildObjectPointers().size() - 1)
+        if (counter != object.KeyObjectPairs().size() - 1)
             this->buffer << "},\n";
         else
             this->buffer << "}\n";
@@ -128,24 +127,24 @@ void JSONCpp::JSONFile::WritePairToFileWithoutKeys(const NestedJSON* object) {
     }
 }
 
-void JSONCpp::JSONFile::WriteFileHeader() {
+void JSONCpp::JSONFileWriter::WriteFileHeader() {
     this->buffer << "{\n\n";
 }
 
-void JSONCpp::JSONFile::PrepareFileForWriting() {
+void JSONCpp::JSONFileWriter::PrepareFileForWriting() {
     this->contents = buffer.str();
     this->contents.pop_back(); // Removes }
     this->buffer = std::stringstream(this->contents);
 }
 
-void JSONCpp::JSONFile::PrepareFileForClosing() {
+void JSONCpp::JSONFileWriter::PrepareFileForClosing() {
     this->buffer << "\n}\n";
     this->contents.append(buffer.str());
     this->file << this->contents;
 }
 
 
-bool JSONCpp::JSONFile::Update() {
+bool JSONCpp::JSONFileWriter::Update() {
     // Open file
     // Pop item out of queqe and cast it
     // After cast, write to file
@@ -173,19 +172,12 @@ bool JSONCpp::JSONFile::Update() {
         
         // Next try casting map type
         try {
-            NestedJSON json = std::any_cast<NestedJSON>(pair);
-
+            JSONObj json = std::any_cast<JSONObj>(pair);
             this->WritePairToFile(json);
-//
-//            if(this->dataQueue.size() != 1)
-//                this->buffer << "h},\n";
-//            else
-//                this->buffer << "h}\n";
-//
         } catch (const std::bad_any_cast& err) {
 
         }
-
+        
         this->dataQueue.pop(); // Pop top element
     }
     
@@ -195,11 +187,11 @@ bool JSONCpp::JSONFile::Update() {
     return false;
 }
 
-void JSONCpp::JSONFile::BeautifyJSON() {
+void JSONCpp::JSONFileWriter::BeautifyJSON() {
     
 }
 
-JSONCpp::JSONFile::~JSONFile() {
+JSONCpp::JSONFileWriter::~JSONFileWriter() {
     if(file.is_open())
         file.close();
 }
